@@ -24,5 +24,6 @@ func (app *Config) routes() http.Handler {
 	// still alive check heartbeat
 	mux.Use(middleware.Heartbeat("/ping"))
 
+	mux.Post("/authenticate", app.Authenticate)
 	return mux
 }
