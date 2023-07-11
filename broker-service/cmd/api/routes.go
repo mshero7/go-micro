@@ -25,6 +25,8 @@ func (app *Config) routes() http.Handler {
 	mux.Use(middleware.Heartbeat("/ping"))
 
 	mux.Post("/", app.Broker)
+	// Json format 으로 받겠다고 동의한것
+	mux.Post("/handle", app.HandleSubmission)
 
 	return mux
 }
