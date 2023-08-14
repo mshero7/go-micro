@@ -23,3 +23,5 @@ How to Communicate Micro Services
    RabbitMQ를 통한 메시지 소비
 ```
 
+## 33
+Broker service to coummunicate with the logger service
