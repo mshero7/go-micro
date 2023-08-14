@@ -28,3 +28,6 @@ Broker service to coummunicate with the logger service
 
 ## 34
 Add route and handler broker to communicate with the logger service
+
+## 35
+FrontEnd modify (LoggerService Payload)
