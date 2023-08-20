@@ -31,3 +31,6 @@ Add route and handler broker to communicate with the logger service
 
 ## 35
 FrontEnd modify (LoggerService Payload)
+
+## 36
+Add basic logging to the Auth service.
