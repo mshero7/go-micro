@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"log"
 	"net/http"
 )
 
@@ -36,8 +37,9 @@ func (app *Config) Broker(w http.ResponseWriter, r *http.Request) {
 func (app *Config) HandleSubmission(w http.ResponseWriter, r *http.Request) {
 	var requestPayload RequestPayload
 
-	err := app.readJson(w, r, requestPayload)
+	err := app.readJson(w, r, &requestPayload)
 	if err != nil {
+		log.Println("error from jsonFromService service", err)
 		app.errorJSON(w, err)
 	}
 
@@ -59,6 +61,7 @@ func (app *Config) authenticate(w http.ResponseWriter, a AuthPayload) {
 	// call the service
 	request, err := http.NewRequest("POST", "http://authentication-service/authenticate", bytes.NewBuffer(jsonData))
 	if err != nil {
+		log.Println("error from jsonFromService service", err)
 		app.errorJSON(w, err)
 		return
 	}
@@ -66,6 +69,7 @@ func (app *Config) authenticate(w http.ResponseWriter, a AuthPayload) {
 	client := &http.Client{}
 	response, err := client.Do(request)
 	if err != nil {
+		log.Println("error from jsonFromService service", err)
 		app.errorJSON(w, err)
 		return
 	}
@@ -87,11 +91,13 @@ func (app *Config) authenticate(w http.ResponseWriter, a AuthPayload) {
 	// decode JSON from the auth service
 	err = json.NewDecoder(response.Body).Decode(&jsonFromService)
 	if err != nil {
+		log.Println("error from jsonFromService service", err)
 		app.errorJSON(w, err)
 		return
 	}
 
 	if jsonFromService.Error {
+		log.Println("error from jsonFromService service", err)
 		app.errorJSON(w, err, http.StatusUnauthorized)
 		return
 	}
