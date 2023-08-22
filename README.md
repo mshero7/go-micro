@@ -34,3 +34,7 @@ FrontEnd modify (LoggerService Payload)
 
 ## 36
 Add basic logging to the Auth service.
+
+## 40
+Add Mailer service. By Mail hog.
+ㄴ 실제 SMTP를 써서 전송하는것이 아닌 호출만으로 처리를 확인가능함.
