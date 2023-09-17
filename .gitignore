@@ -1,4 +1,3 @@
 go-micro.code-workspace
 
-project/db-data/mongo
-project/db-data/postgres
+project/db-data/*
