@@ -1,6 +1,9 @@
 package main
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+)
 
 // 이메일 발송 핸들러.
 func (app *Config) SendMail(w http.ResponseWriter, r *http.Request) {
@@ -28,6 +31,7 @@ func (app *Config) SendMail(w http.ResponseWriter, r *http.Request) {
 
 	err = app.Mailer.SendSMTPMessage(msg)
 	if err != nil {
+		fmt.Println(err)
 		app.errorJSON(w, err)
 		return
 	}
