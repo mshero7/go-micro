@@ -4,6 +4,8 @@
 
 ```
 프론트엔드를 포함한 5개의 MicroService 통신 
+Remeber!
+microservice is supposed to be self-contained.
 
 How to Communicate Micro Services 
 - Using Rest API
