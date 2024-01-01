@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"runtime"
 )
 
 func main() {
@@ -12,11 +13,29 @@ func main() {
 		render(w, "test.page.gohtml")
 	})
 
-	fmt.Println("Starting front end service on port 80")
-	err := http.ListenAndServe(":80", nil)
-	if err != nil {
-		log.Panic(err)
+	os := runtime.GOOS
+
+	switch os {
+	case "windows":
+		fmt.Println("Starting front end service on port 1514")
+		err := http.ListenAndServe(":1514", nil)
+		if err != nil {
+			log.Panic(err)
+		}
+	case "linux": // WSL2 Env
+		fmt.Println("Starting front end service on port 1514")
+		err := http.ListenAndServe(":1514", nil)
+		if err != nil {
+			log.Panic(err)
+		}
+	case "darwin":
+		fmt.Println("Starting front end service on port 80")
+		err := http.ListenAndServe(":80", nil)
+		if err != nil {
+			log.Panic(err)
+		}
 	}
+
 }
 
 func render(w http.ResponseWriter, t string) {
