@@ -93,7 +93,8 @@ services:
       - "8025:8025"
       
   rabbitmq:
-    image: 'rabbitmq:3.9-management'
+    image: 'rabbitmq:3.12.11-management'
+    container_name: 'rabbitmq'
     ports:
       - "5672:5672"
       - "15672:15672"
