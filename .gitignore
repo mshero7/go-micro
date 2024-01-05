@@ -1,4 +1,6 @@
 go-micro.code-workspace
 
 project/db-data/*
-**/*~App
+**/*App
+**/.mod
+**/.sum
