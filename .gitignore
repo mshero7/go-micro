@@ -1,9 +1,6 @@
 go-micro.code-workspace
 
 project/db-data/*
-**/*App
-**/*.mod
-**/*.sum
-
-logger-service/go.mod
-logger-service/go.sum
+*/*App
+*/*.mod
+*/*.sum
