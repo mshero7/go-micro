@@ -2,5 +2,10 @@ go-micro.code-workspace
 
 project/db-data/*
 */*App
-*/*.mod
-*/*.sum
+
+logger-service/loggerSerivceApp
+authentication-service/authApp
+broker-service/brokerApp
+front-end/frontApp
+listener-service/listenerServiceApp
+mailer-service/mailServiceApp
