@@ -40,3 +40,19 @@ Add basic logging to the Auth service.
 ## 40
 Add Mailer service. By Mail hog.
 ㄴ 실제 SMTP를 써서 전송하는것이 아닌 호출만으로 처리를 확인가능함.
+
+## 69
+```
+ERROR 이유
+protoc 컴파일러가 아래 모듈을 찾지 못하는 상황.
+
+ERROR Logs
+protoc-gen-go-grpc: program not found or is not executable
+--go-grpc_out: protoc-gen-go-grpc: Plugin failed with status code 1.
+
+HOW TO FIX 
+protoc-gen-go-grpc 설치 후 PATH 재설정
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest 
+export PATH="$PATH:$(go env GOPATH)/bin"
+```
+
