@@ -1,4 +1,11 @@
 go-micro.code-workspace
 
 project/db-data/*
-**/*~App
+*/*App
+
+logger-service/loggerSerivceApp
+authentication-service/authApp
+broker-service/brokerApp
+front-end/frontApp
+listener-service/listenerServiceApp
+mailer-service/mailServiceApp
