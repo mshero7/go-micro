@@ -56,3 +56,6 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 export PATH="$PATH:$(go env GOPATH)/bin"
 ```
 
+## 77
+docker swarm 실습을 위한
+hub.docker.com/repositories/mshero7 도커이미지 등록
