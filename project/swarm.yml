@@ -4,8 +4,8 @@ services:
   broker-service:
     image: mshero7/broker-service:1.0.0
     ports:
-      - "8080:80"
-    depoly:
+      - 8080:80
+    deploy:
       mode: replicated
       replicas: 1
 
@@ -30,7 +30,7 @@ services:
       replicas: 1
   
   mailer-service:
-    image: mshero7/mail-service:1.0.0
+    image: mshero7/mailer-service:1.0.0
     deploy:
       mode: replicated
       replicas: 1
