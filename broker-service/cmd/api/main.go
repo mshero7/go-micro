@@ -11,7 +11,7 @@ import (
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 
-const webPort = "80" // docker port
+const webPort = "8080" // docker port
 
 type Config struct {
 	Rabbit *amqp.Connection
