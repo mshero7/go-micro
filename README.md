@@ -79,5 +79,4 @@ docker stack rm {{myappName}}
 
 front-end 도 build 한 뒤 swarm.yml 에 작성.
 
-
-
+nginx 대신 caddy 로 reverse-proxy 처리.
