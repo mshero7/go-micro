@@ -6,7 +6,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"runtime"
+	"os"
 )
 
 func main() {
@@ -14,29 +14,11 @@ func main() {
 		render(w, "test.page.gohtml")
 	})
 
-	os := runtime.GOOS
-
-	switch os {
-	case "windows":
-		fmt.Println("Starting front end service on port 1514")
-		err := http.ListenAndServe(":1514", nil)
-		if err != nil {
-			log.Panic(err)
-		}
-	case "linux": // WSL2 Env
-		fmt.Println("Starting front end service on port 1514")
-		err := http.ListenAndServe(":1514", nil)
-		if err != nil {
-			log.Panic(err)
-		}
-	case "darwin":
-		fmt.Println("Starting front end service on port 8081")
-		err := http.ListenAndServe(":8081", nil)
-		if err != nil {
-			log.Panic(err)
-		}
+	fmt.Println("Starting front end service on port 8081")
+	err := http.ListenAndServe(":8081", nil)
+	if err != nil {
+		log.Panic(err)
 	}
-
 }
 
 //go:embed templates
@@ -51,7 +33,7 @@ func render(w http.ResponseWriter, t string) {
 	}
 
 	var templateSlice []string
-	templateSlice = append(templateSlice, fmt.Sprintf("./templates/%s", t))
+	templateSlice = append(templateSlice, fmt.Sprintf("templates/%s", t))
 
 	for _, x := range partials {
 		templateSlice = append(templateSlice, x)
@@ -63,7 +45,13 @@ func render(w http.ResponseWriter, t string) {
 		return
 	}
 
-	if err := tmpl.Execute(w, nil); err != nil {
+	var data struct {
+		BrokerURL string
+	}
+
+	data.BrokerURL = os.Getenv("BROKER_URL")
+
+	if err := tmpl.Execute(w, data); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
