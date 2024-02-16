@@ -62,20 +62,28 @@ docker swarm 실습을 위한
 hub.docker.com/repositories/mshero7 도커이미지 등록
 
 도커스웜 초기세팅
+```
 docker swarm init 
 docker swarm join-token worker
 docker swarm join-token manager
 docker stack deploy -c swarm.yml {{myappName}}
+```
 
 서비스 스케일아웃
+```
 docker service scale go-msa_listener-service=2
+```
 
 서비스 UPDATE (version up or down)
+```
 docker service update --image mshero7/logger-service:1.0.0 go-msa_logger-service
 docker service update --image mshero7/logger-service:1.0.1 go-msa_logger-service
+```
 
 스웜에 올라온 애플리케이션 삭제.
+```
 docker stack rm {{myappName}}
+```
 
 front-end 도 build 한 뒤 swarm.yml 에 작성.
 
